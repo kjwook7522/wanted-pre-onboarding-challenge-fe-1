@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios, { AxiosError } from "axios";
-import BoxTemplate from "@templates/BoxTemplate";
-import styled from "styled-components";
-import useInput from "@hooks/useInput";
 import { useNavigate } from "react-router-dom";
+import axios, { AxiosError } from "axios";
+import styled from "styled-components";
+import BoxTemplate from "@templates/BoxTemplate";
+import useInput from "@hooks/useInput";
 
 function LoginPage() {
   // router hook

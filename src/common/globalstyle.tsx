@@ -7,6 +7,16 @@ const GlobalStyle = createGlobalStyle`
     background-color: #44c3f8;
     color: #fff;
   }
+
+  a {
+    box-sizing: border-box;
+    text-decoration: inherit;
+    color: inherit;
+
+    :hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 export default GlobalStyle;

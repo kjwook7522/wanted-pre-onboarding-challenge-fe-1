@@ -45,7 +45,7 @@ function TodoItem({ id = "", isChecked, onRemoved, onChecked, onEdited, todo, ..
     <$Li {...props} isChecked={isChecked}>
       <Checkbox id={id} onClick={handleChecked} />
       {isEditing ? (
-        <$Input type="text" value={text} onChange={handleText} />
+        <$Input type="text" isChecked={isChecked} value={text} onChange={handleText} />
       ) : (
         <Link to={`/${id}`}>{todo}</Link>
       )}
@@ -70,7 +70,7 @@ function TodoItem({ id = "", isChecked, onRemoved, onChecked, onEdited, todo, ..
   );
 }
 
-const $Li = styled.li<Props>`
+const $Li = styled.li<{ isChecked?: boolean }>`
   padding: 1.2rem 1rem;
   position: relative;
   display: flex;
@@ -90,7 +90,7 @@ const $Li = styled.li<Props>`
   }
 `;
 
-const $Input = styled.input`
+const $Input = styled.input<{ isChecked?: boolean }>`
   width: 80%;
   margin: 0;
   padding: 0;
@@ -100,6 +100,8 @@ const $Input = styled.input`
   line-height: 1.5;
   font-size: 1rem;
   color: #44c3f8;
+  text-decoration: ${props => props.isChecked && "line-through"};
+  text-decoration-color: ${props => props.isChecked && "#44c3f8"};
 
   :focus {
     outline: none;

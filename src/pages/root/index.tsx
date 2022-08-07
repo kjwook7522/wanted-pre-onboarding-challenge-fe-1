@@ -158,6 +158,7 @@ const $Input = styled.input`
 const $TodoList = styled.ul`
   min-width: 500px;
   max-width: 1000px;
+  margin-bottom: 1rem;
 `;
 
 const $LogoutWrapper = styled.div`

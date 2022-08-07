@@ -1,17 +1,41 @@
 import React, { useEffect, useState } from "react";
+import axios, { AxiosError } from "axios";
 import BoxTemplate from "@templates/BoxTemplate";
 import styled from "styled-components";
 import useInput from "@hooks/useInput";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
+  // router hook
+  const navigate = useNavigate();
+
+  // state
   const [email, handleEmail] = useInput("");
   const [password, handlePassword] = useInput("");
   const [isFormValid, setIsFormValid] = useState(false);
 
-  const handleForm: React.FormEventHandler<HTMLFormElement> = event => {
+  // handle function
+  const handleForm: React.FormEventHandler<HTMLFormElement> = async event => {
     if (!isFormValid) return;
 
     event.preventDefault();
+
+    const body = { email, password };
+    try {
+      const res = await axios.post("/users/login", body);
+
+      localStorage.setItem("token", res.data.token);
+      navigate("/");
+    } catch (err) {
+      if (!(err instanceof AxiosError)) {
+        console.error(err);
+        return;
+      }
+
+      if (err.response?.status === 400) {
+        alert("아이디 혹은 비밀번호가 틀렸습니다");
+      }
+    }
   };
 
   useEffect(() => {

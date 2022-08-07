@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-type HookReturn = [string, React.ChangeEventHandler<HTMLInputElement>];
+type HookReturn = [string, React.ChangeEventHandler<HTMLInputElement>, () => void];
 
 function useInput(initValue: string): HookReturn {
   const [input, setInput] = useState(initValue);
@@ -9,7 +9,11 @@ function useInput(initValue: string): HookReturn {
     setInput(event.target.value);
   };
 
-  return [input, handleInput];
+  const clear = (): void => {
+    setInput("");
+  };
+
+  return [input, handleInput, clear];
 }
 
 export default useInput;

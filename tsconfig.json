@@ -20,7 +20,8 @@
       "@components/*": ["./components/*"],
       "@pages/*": ["./pages/*"],
       "@common/*": ["./common/*"],
-      "@templates/*": ["./templates/*"]
+      "@templates/*": ["./templates/*"],
+      "@hooks/*": ["./hooks/*"]
     }
   },
   "include": ["src"],

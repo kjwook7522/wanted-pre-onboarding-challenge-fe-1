@@ -51,6 +51,11 @@ function RootPage() {
     setTodos(_todos);
   };
 
+  const handleLogout: ClickHandler<HTMLAnchorElement> = () => {
+    localStorage.removeItem("token");
+    navigate("/auth/login");
+  };
+
   useEffect(() => {
     const getTodos = async () => {
       const token = localStorage.getItem("token");
@@ -99,6 +104,10 @@ function RootPage() {
           />
         ))}
       </$TodoList>
+
+      <$LogoutWrapper>
+        <$Logout onClick={handleLogout}>로그아웃 하시겠습니까?</$Logout>
+      </$LogoutWrapper>
     </BoxTemplate>
   );
 }
@@ -149,6 +158,16 @@ const $Input = styled.input`
 const $TodoList = styled.ul`
   min-width: 500px;
   max-width: 1000px;
+  margin-bottom: 1rem;
+`;
+
+const $LogoutWrapper = styled.div`
+  text-align: right;
+`;
+
+const $Logout = styled.a`
+  opacity: 0.6;
+  cursor: pointer;
 `;
 
 export default RootPage;

@@ -40,6 +40,14 @@ function SignupPage() {
   };
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      navigate("/");
+    }
+  }, []);
+
+  useEffect(() => {
     if (!email.includes("@") && !password.includes(".")) {
       setIsFormValid(false);
       return;

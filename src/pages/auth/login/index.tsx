@@ -15,7 +15,7 @@ function LoginPage() {
   const [isFormValid, setIsFormValid] = useState(false);
 
   // handle function
-  const handleForm: React.FormEventHandler<HTMLFormElement> = async event => {
+  const handleForm: SubmitHandler = async event => {
     if (!isFormValid) return;
 
     event.preventDefault();

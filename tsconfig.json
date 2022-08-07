@@ -19,7 +19,8 @@
       "@/*": ["*"],
       "@components/*": ["./components/*"],
       "@pages/*": ["./pages/*"],
-      "@common/*": ["./common/*"]
+      "@common/*": ["./common/*"],
+      "@templates/*": ["./templates/*"]
     }
   },
   "include": ["src"],
